@@ -1,0 +1,69 @@
+<html>
+	<head>
+       <meta charset="utf-8">
+ 	<meta name="viewport" content="width=device-width,initial-scale=1">
+ 	<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+ 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Gentium+Book+Basic" rel="stylesheet">
+	<link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="http://weloveiconfonts.com/api/?family=zocial"/>
+        <title></title>
+	</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3"><img class="title-logo" src="images/logo.png" alt="Udacity logo"></div>
+            <div class="col-md-9 text-uppercase text-right">
+                <h2 class="title-super text-thin">Catalog App</h2>
+                <h5 class="text-muted">by Sonali Homkar</h5>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                <ul>
+                    {% for message in messages %}
+                    <li><strong>{{ message }}</strong></li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+                {% endwith %}
+
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                {% if not i %}
+                {% for i in category %}
+                <div>
+                    <a href='/ItemCatlog/{{i.id}}/edit/'>{{i.catName}}</a>
+                </div>
+                {% endfor %}
+                {% else %}
+                <div>No records to display Create new category</div>
+                {% endif %}
+                <a href='{{url_for('newCategory')}}'>Create new Category</a>
+                <a href="/ItemCatlog/addItem/">add Item</a>
+            </div>
+
+        
+        
+            <div class="col-md-6">
+                {% for i in items %}
+                <div>
+                    <a href='/ItemCatlog/{{i.id}}/displayItemDetail/'>{{i.itemName}}...{{ i.id}}</a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+   </div>
+
+            
+
+            
+            
+</body>
+</html>
